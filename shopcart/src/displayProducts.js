@@ -1,18 +1,29 @@
 import React, { Component } from "react";
-import { products } from "./products.js";
 import { useState } from 'react';
 import { Modal } from 'react-bootstrap';
+import { products } from "./products.js";
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { ListGroup, ListGroupItem } from "reactstrap";
 
 class displayProduct extends Component {
-renderItems(items) {
-        const [show, setShow] = useState(false);
-        const [showImge, setShowImge ] = useState({});
-        const handleClose = () => setShow(false);
-        const handleShow = (item) => {
-            setShow(true);
-            setShowImge(item);
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: "Shop to React",
+      items: products,
+    };
+  }
 
-        }
+  renderItems(items) {
+    const [show, setShow] = useState(false);
+    const [showImge, setShowImge] = useState({});
+    const handleClose = () => setShow(false);
+    const handleShow = (item) => {
+      setShow(true);
+      setShowImge(item);
+    };
+
     return (
       <div>
         {items.map((item) => (
@@ -25,6 +36,13 @@ renderItems(items) {
                   width="60px"
                   onClick={() => handleShow(item)}
                 />
+              </span>
+              <span className="btns">
+                <button
+                className="d-block d-sminline mx-auto my-3 mx-sm-2" >
+                  +
+                  </button>
+                <button>-</button>
               </span>
               <span className="qtity">{item.quantity}</span>quantity
               <Modal show={show} onHide={handleClose}>
@@ -39,7 +57,8 @@ renderItems(items) {
                     className="mx-5"
                   />
                   <p>
-                    <span className="text-dark">Ratings:</span> {showImge.ratings}/5
+                    <span className="text-dark">Ratings:</span>{" "}
+                    {showImge.ratings}/5
                   </p>
                 </Modal.Body>
               </Modal>
@@ -48,8 +67,7 @@ renderItems(items) {
         ))}
       </div>
     );
-  } 
-
+  }
   render() {
     return (
       <div>
@@ -73,5 +91,6 @@ renderItems(items) {
     );
   }
 }
+
 
 export default displayProduct;
