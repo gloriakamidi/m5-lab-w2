@@ -1,7 +1,7 @@
 import './App.css';
 import React, { Component } from "react";
 import { products } from "./products.js"
-import { displayProducts } from "./displayProducts"
+import { displayProduct } from "./displayProducts"
 import Navbar from "./navbar";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -30,7 +30,9 @@ class App extends React.Component {
       {},
       (
         <div className="App">
-          <Navbar />
+          <Navbar 
+            prods={this.state.items}
+          />
         </div>
       )
     );

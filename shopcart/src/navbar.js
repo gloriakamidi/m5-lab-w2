@@ -30,17 +30,15 @@ import
               </ul>
 
               {/* Routes */}
-              <Switch>
-                <Route exact path="/">
-                  <Home />
-                </Route>
-                <Route path="/cart">
-                  <Cart
+              <Routes>
+                <Route exact path="/displayProducts" element={ <displayProducts />} />
+                <Route path="/cart" element= { <Cart 
+               
                     addItem={this.handleAddBtn}
                     removeItem={this.handleRemoveBtn}
-                  />
+                  /> } >
                 </Route>
-              </Switch>
+              </Routes>
             </Router>
           </div>
         );
