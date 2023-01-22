@@ -1,108 +1,75 @@
-import React, { Component } from "react";
-import { useState } from 'react';
-import { Modal } from 'react-bootstrap';
-import { products } from "./products.js";
-import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import React from "react";
+import { useState } from "react";
+import { Modal } from "react-bootstrap";
+import { faPlusCircle, faMinusCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { ListGroup, ListGroupItem } from "reactstrap";
 
-function displayProduct (props){
- 
-  renderItems(items) {
-    const [show, setShow] = useState(false);
-    const [showImge, setShowImge] = useState({});
-    const handleClose = () => setShow(false);
-    const handleShow = (item) => {
-      setShow(true);
-      setShowImge(item);
 
-    }
-    };
-
-    return (
-       <div>
-      <ListGroup>
-        <h1>
-            <ListGroupItem
-              tag="a"
-              className="align-self-center py-2 w-50 bg-info text-dark"
+function DisplayProducts(props) {
+  const [show, setShow] = useState(false);
+  const [showImge, setShowImge] = useState({});
+  const handleClose = () => setShow(false);
+  const handleShow = (item) => {
+    setShow(true);
+    setShowImge(item);
+  };
+  return (
+    <div>
+      {props.products.map((product) => {
+        return (
+          <div key={product.id} className="border border-1 p-3">
+            <h4 className="mx-5">{product.name}</h4>
+            <img
+              src={product.image}
+              width="150"
+              alt={product.name}
+              className="mx-5"
+              onClick={() => handleShow(product)}
+            />
+            <button
+              className="btn btn-secondary mx-2"
+              onClick={() => props.onIncrement(product)}
             >
-              <span>{this.state.title}</span>
-              <span className="cart">
-                <FontAwesomeIcon icon={faShoppingCart} className="mx-3" />
-                <faShoppingCart />0 items
+              <FontAwesomeIcon icon={faPlusCircle} className="fas fa-lg" />
+            </button>
+            <button
+              className="btn btn-secondary mx-2"
+              onClick={() => props.onDecrement(product)}
+            >
+              <FontAwesomeIcon icon={faMinusCircle} className="fas fa-lg" />
+            </button>
+            <div className="d-inline-block mx-4 text-center">
+              <span className="d-block mb-2">Quantity</span>
+              <span
+                id="qty"
+                className="px-3 py-2 border border-3 d-inline-block"
+              >
+                {product.value}
               </span>
-            </ListGroupItem>
-          </h1>
-      <div>
-        
-        {items.map((item) => (
-          <ListGroupItem className="align-self-center py-2 w-50">
-            <div key={item.id}>
-              <p>{item.name}</p>
-              <span>
-                <img
-                  src={item.image}
-                  width="60px"
-                  onClick={() => handleShow(item)}
-                />
-              </span>
-              <span className="btns">
-                <button
-                className="d-block d-sminline mx-auto my-3 mx-sm-2" >
-                  +
-                  </button>
-                <button>-</button>
-              </span>
-              <span className="qtity">{item.quantity}</span>quantity
-              <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                  <Modal.Title>{showImge.name}</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                  <img
-                    src={showImge.image}
-                    width="350"
-                    alt={showImge.name}
-                    className="mx-5"
-                  />
-                  <p>
-                    <span className="text-dark">Ratings:</span>{" "}
-                    {showImge.ratings}/5
-                  </p>
-                </Modal.Body>
-              </Modal>
             </div>
-          </ListGroupItem> 
-        ))}
-      </div>
-      {this.renderItems(this.state.items)}
-      </ListGroup>
-      </div>
-    );
-  }
-  
-    // return (
-    //   <div>
-    //     <ListGroup>
-    //       <h1>
-    //         <ListGroupItem
-    //           tag="a"
-    //           className="align-self-center py-2 w-50 bg-info text-dark"
-    //         >
-    //           <span>{this.state.title}</span>
-    //           <span className="cart">
-    //             <FontAwesomeIcon icon={faShoppingCart} className="mx-3" />
-    //             <faShoppingCart />0 items
-    //           </span>
-    //         </ListGroupItem>
-    //       </h1>
+          </div>
+        );
+      })}
 
-    //       {this.renderItems(this.state.items)}
-    //     </ListGroup>
-    //   </div>
-    // );
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>{showImge.name}</Modal.Title>
+        </Modal.Header>
 
+        <Modal.Body>
+          <img
+            src={showImge.image}
+            width="350"
+            alt={showImge.name}
+            className="mx-5"
+          />
+          <p>
+            <span className="text-dark">Ratings:</span> {showImge.ratings}/5
+          </p>
+        </Modal.Body>
+      </Modal>
+    </div>
+  );
+}
 
-
-export default displayProduct;
+export default DisplayProducts;

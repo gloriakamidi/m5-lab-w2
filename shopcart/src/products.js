@@ -1,6 +1,5 @@
-export const products = {
-  title: "Shop to React",
-  items: [
+export const products = [
+  
     {
       id: 0,
       name: "Unisex Cologne",
@@ -33,5 +32,4 @@ export const products = {
       quantity: 0
       
     },
-  ],
-};
+  ]

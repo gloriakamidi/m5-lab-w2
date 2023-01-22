@@ -1,47 +1,45 @@
 import React from "react";
-import 
-{ BrowserRouter as Router, 
-    Routes, 
-    Route, 
-    Link } from "react-router-dom";
+import DisplayProducts from "./displayProducts";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShoppingCart, faHome } from "@fortawesome/free-solid-svg-icons";
+import Cart from "./Cart";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
-    function Navbar (props) {
-        return (
-          <div>
-            <Router>
-              {/* Navigation */}
-              <ul>
-                <li>
-                  <Link to="/">
-                    <FontAwesomeIcon
-                      icon={faHome}
-                      className="fas fa-2x my-3 mr-2 text-white"
-                    />
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/cart">
-                    <FontAwesomeIcon
-                      icon={faShoppingCart}
-                      className="fas fa-2x my-3  text-white"
-                    />
-                  </Link>
-                </li>
-              </ul>
+function Navbar(props) {
+  return (
+    <div>
+      <Router>
+        <Link to="/" className="HomeLink">
+            Shop to React
+        </Link>
+        <Link to="/displayProducts">
+          <FontAwesomeIcon
+            icon={faHome}
+            className="fas fa-2x my-3 mr-2 text-white"
+          />
+        </Link>
 
-              {/* Routes */}
-              <Routes>
-                <Route exact path="/displayProducts" element={ <displayProducts />} />
-                <Route path="/cart" element= { <Cart 
-               
-                    addItem={this.handleAddBtn}
-                    removeItem={this.handleRemoveBtn}
-                  /> } >
-                </Route>
-              </Routes>
-            </Router>
-          </div>
-        );
-    }
-
-    export default Navbar;
+        <Link to="/cart">
+          <FontAwesomeIcon
+            icon={faShoppingCart}
+            className="fas fa-2x my-3  text-white"
+          />
+        </Link>
+        {/* Routes */}
+        <Routes>
+          <Route
+            exact
+            path="/"
+            element={
+              <DisplayProducts  products={props.prods} />
+            }
+          />
+          {/* <Route path="/cart">
+                    <Cart/>
+                </Route> */}
+        </Routes>
+      </Router>
+    </div>
+  );
+}
+export default Navbar;
