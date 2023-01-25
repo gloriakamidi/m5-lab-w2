@@ -34,11 +34,10 @@ function Navbar(props) {
               <DisplayProducts  products={props.prods} />
             }
           />
-          {/* <Route path="/cart">
-                    <Cart/>
-                </Route> */}
+          <Route path="/cart" element={  <Cart/>}
+                />
         </Routes>
-      </Router>
+      </Router> 
     </div>
   );
 }

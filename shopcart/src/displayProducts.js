@@ -13,6 +13,11 @@ function DisplayProducts(props) {
     setShow(true);
     setShowImge(item);
   };
+
+  //for + and - buttons
+
+
+
   return (
     <div>
       {props.products.map((product) => {

@@ -1,8 +1,11 @@
 import './App.css';
 import React, { Component } from "react";
+// import { useCart } from "react-use-cart";
+// import { CartProvider } from "react-use-cart";
 import { products } from "./products.js"
 import Navbar from "./navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
+// import Cart from './Cart';
 // import { ListGroup, ListGroupItem } from "reactstrap";
 
 class App extends Component {
@@ -17,6 +20,17 @@ class App extends Component {
   // this.setState({})
   // };
   // onDecrement = (subtract) => {
+    // this.setState({})
+  // };
+
+  
+ 
+  //   const onDecrement = () => {
+  //   setQuantity(prevCount => prevCount - 1 );
+
+  // }
+  // const onIncrement = () => {
+  //   setQuantity((prevCount) => prevCount + 1);
   // };
 
   render() {
@@ -36,10 +50,9 @@ class App extends Component {
     //    </ListGroup>
     //  </div>;
     return (
-   
       <div className="App">
-        <Navbar 
-        prods={this.state.items} />
+        <Navbar prods={this.state.items} />
+        {/* <Cart /> */}
       </div>
     );
   }
