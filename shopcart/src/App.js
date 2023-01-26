@@ -16,42 +16,13 @@ class App extends Component {
       items: products,
     };
   }
-  //  onIncrement = (add) => {
-  // this.setState({})
-  // };
-  // onDecrement = (subtract) => {
-    // this.setState({})
-  // };
 
   
- 
-  //   const onDecrement = () => {
-  //   setQuantity(prevCount => prevCount - 1 );
-
-  // }
-  // const onIncrement = () => {
-  //   setQuantity((prevCount) => prevCount + 1);
-  // };
 
   render() {
-    //  <div>
-    //    <ListGroup>
-    //      <h1>
-    //        <ListGroupItem
-    //          tag="a"
-    //          className="align-self-center py-2 w-50 bg-info text-dark"
-    //        >
-    //          <span>{this.state.title}</span>
-    //          <span className="cart">
-    //            <faShoppingCart />0 items
-    //          </span>
-    //        </ListGroupItem>
-    //      </h1>
-    //    </ListGroup>
-    //  </div>;
     return (
       <div className="App">
-        <Navbar prods={this.state.items} />
+        <Navbar prods={this.state.items} titre={this.state.title} />
         {/* <Cart /> */}
       </div>
     );
