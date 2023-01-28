@@ -5,7 +5,6 @@ import { faPlusCircle, faMinusCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { ListGroup, ListGroupItem } from "reactstrap";
 
-
 function DisplayProducts(props) {
   const [show, setShow] = useState(false);
   const [showImge, setShowImge] = useState({});
@@ -15,31 +14,9 @@ function DisplayProducts(props) {
     setShowImge(item);
   };
 
-  //for + and - buttons
-const [counter, setCounter] = useState(0)
-const [totalCounter, setTotalCounter] = useState(0);
-
-
-//+ and - handlers
- const onIncrement = (product) => {
-  setCounter((val) => val + 1); 
-  product.quantity = counter;
-  setTotalCounter((val) => val + 1); 
- };
-
-  const onDecrement = (product) => {
-    setCounter((val) => val - 1);
-    product.quantity= counter
-    setTotalCounter((val) => val - 1); 
-  };
-
-
-
   return (
-    
     <div>
       {props.products.map((product) => {
-      
         return (
           <div key={product.id} className="border border-1 p-3">
             <h4 className="mx-5">{product.name}</h4>
@@ -52,16 +29,13 @@ const [totalCounter, setTotalCounter] = useState(0);
             />
             <button
               className="btn btn-secondary mx-2"
-              // onClick={() => props.onIncrement(product)}
-              onClick={() => onIncrement(counter)}
+              onClick={() => props.onIncrement(product)}
             >
               <FontAwesomeIcon icon={faPlusCircle} className="fas fa-lg" />
             </button>
             <button
               className="btn btn-secondary mx-2"
-              // onClick={() => props.onDecrement(product)}
-              onClick={() => onDecrement(counter)}
-              disabled={counter === 0}
+              onClick={() => props.onDecrement(product)}
             >
               <FontAwesomeIcon icon={faMinusCircle} className="fas fa-lg" />
             </button>
@@ -71,8 +45,7 @@ const [totalCounter, setTotalCounter] = useState(0);
                 id="qty"
                 className="px-3 py-2 border border-3 d-inline-block"
               >
-                {/* {product.quantity} */}
-                {counter}
+                {product.quantity}
               </span>
             </div>
           </div>
@@ -101,20 +74,3 @@ const [totalCounter, setTotalCounter] = useState(0);
 }
 
 export default DisplayProducts;
-
-
-   //  <div>
-    //    <ListGroup>
-    //      <h1>
-    //        <ListGroupItem
-    //          tag="a"
-    //          className="align-self-center py-2 w-50 bg-info text-dark"
-    //        >
-    //          <span>{this.state.title}</span>
-    //          <span className="cart">
-    //            <faShoppingCart />0 items
-    //          </span>
-    //        </ListGroupItem>
-    //      </h1>
-    //    </ListGroup>
-    //  </div>;
