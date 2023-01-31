@@ -36,7 +36,7 @@ function Navbar(props) {
               />
             }
           />
-          <Route path="/cart" element={<Cart />} />
+          <Route path="/cart" element={<Cart prods={props.prods} />} />
         </Routes>
       </Router>
     </container>

@@ -4,14 +4,29 @@ import React from "react";
 function Cart(props) {
   
 const totalValue = props;
+// let item= [...products];
+// item = item.filter((prods)) => prods.id !== prod.id);
   return (
     <div>
-      {props.products.map((product) => {
+      {props.prods.map((prod) => {
         return (
-          <div>
-            <h1>Cart</h1>
-            <h3>{product.name}</h3>
-            <img src={product.image} alt={product.name}/>
+          <div key={prod === prod.id} className="border border-1 p-3">
+            <img
+              src={prod.image}
+              width="150"
+              alt={prod.name}
+              className="mx-5"
+           
+            />
+            <h4 className="mx-5">{prod.name}</h4>
+            <span id="qty">{prod.quantity}</span>
+
+            {/* {props.filter(prod) === prod.id} */}
+            {/* {prod.filter(prod) === prod.id} */}
+            {/* {Cart.length === 0 && <p>Cart: (empty)</p>}
+            {Cart.length >0 && <p>Cart: (empty)</p>} */}
+            {/* {`${prod.name} : ${prod.quantity}`} */}
+            {/* <input onClick={() => props.onIncrement(prod)} /> */}
           </div>
         );
       })}

@@ -32,13 +32,15 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Navbar prods={this.state.items} 
+        <Navbar 
+        // totalValue={this.state.products.map(prod=>prod.quantity).reduce((acc, curr, index) =>
+        //   acc + curr, 0)}
+        prods={this.state.items} 
         props={this.state.products}
         handleIncrement={this.handleIncrement}
         handleDecrement={this.handleDecrement}
         />
         
-        {/* <Cart /> */}
       </div>
     );
   }
