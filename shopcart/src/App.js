@@ -16,6 +16,9 @@ class App extends Component {
   }
 
   handleIncrement = (addquantity) => {
+    // let addedProduct = products.map(product => {
+    //   if (product.id === addquantity)
+    // })
     if (addquantity.quantity < 10) {
       const updatedQuantity = addquantity.quantity++;
       this.setState({ updatedQuantity });
