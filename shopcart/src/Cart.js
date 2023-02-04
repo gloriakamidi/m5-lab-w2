@@ -1,40 +1,49 @@
 import React from "react";
-// import { useCart } from "react-use-cart";
+import { Button } from 'react-bootstrap';
+import { Link } from "react-router-dom";
 
-function Cart(props) {
-      let addedProduct = addedProduct.filter(props.map.prod.id);
-// const totalValue = props;
-// let item= [...products];
-// item = item.filter((prods)) => prods.id !== prod.id);
+
+export default function Cart(props) {
   return (
-    <div>
-      {props.prods.map((prod) => {
+    <div className="m-5 px-5 w-75">
+      <h2> Your Cart Items</h2>
+      {props.prods.map(prod => {
+        if (prod.quantity > 0) {
         return (
-          <div key={prod.id} className="border border-1 p-3">
+          <div key={prod.id} className="border">
             <img
               src={prod.image}
               width="150"
               alt={prod.name}
-              className="mx-5"
-              //   onClick={() => handleShow(product)}
             />
-            <h4 className="mx-5">{prod.name}</h4><span>{prod.quantity}</span>
-            
-
-            {/* {props.filter(prod) === prod.id} */}
-            {/* {prod.filter(prod) === prod.id} */}
-            {/* {Cart.length === 0 && <p>Cart: (empty)</p>}
-            {Cart.length >0 && <p>Cart: (empty)</p>} */}
-            {/* {`${prod.name} : ${prod.quantity}`} */}
-            {/* <input onClick={() => props.onIncrement(prod)} /> */}
+            <p className="qty d-inline mx-5">Quantity: {prod.quantity}</p>
+            <p className="px-4">{prod.name}</p>
           </div>
-        );
-      })}
+        )
+      }
+    })}
+      <CheckOutBtn totalValue={props.totalValue} />
     </div>
-  );
-    }
+  )
+}
 
-export default Cart;
+const CheckOutBtn = ({totalValue}) => {
+  return (
+    totalValue > 0 ?
+    <Link to="/signin">
+    <Button className="mt-4">Check Out</Button>
+    </Link>
+    :
+    <React.Fragment>
+      <h4>There are {totalValue} items in your cart</h4>
+      <Link to="/">
+        <Button className="mt-4 bg-success">Continue Shop</Button>
+      </Link>
+    </React.Fragment>
+  )
+}
+  
+  
 
 
 

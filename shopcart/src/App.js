@@ -36,8 +36,8 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar 
-        // totalValue={this.state.products.map(prod=>prod.quantity).reduce((acc, curr, index) =>
-        //   acc + curr, 0)}
+        totalValue={this.state.items.map(prod=>prod.quantity).reduce((acc, curr, index) =>
+          acc + curr, 0)}
         prods={this.state.items} 
         props={this.state.products}
         handleIncrement={this.handleIncrement}
