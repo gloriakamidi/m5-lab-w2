@@ -27,20 +27,20 @@ export default function Cart(props) {
   )
 }
 
-const CheckOutBtn = ({totalValue}) => {
-  return (
-    totalValue > 0 ?
+const CheckOutBtn = ({ totalValue }) => {
+  return totalValue > 0 ? (
+
     <Link to="/signin">
-    <Button className="mt-4">Check Out</Button>
+      <Button className="mt-4 bg-primary">Check Out</Button>
     </Link>
-    :
+  ) : (
     <React.Fragment>
-      <h4>There are {totalValue} items in your cart</h4>
+      <h4>There are {totalValue} items in your cart.</h4>
       <Link to="/">
         <Button className="mt-4 bg-success">Continue Shop</Button>
       </Link>
     </React.Fragment>
-  )
+  );
 }
   
   

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import DisplayProducts from "./displayProducts";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingCart, faHome } from "@fortawesome/free-solid-svg-icons";
+import { faShoppingCart, faRegistered } from "@fortawesome/free-solid-svg-icons";
 // import React, { useState } from "react";
 import Cart from "./Cart";
 import SignIn from "./signin";
@@ -39,17 +39,27 @@ export default function Navbar(props) {
     <React.Fragment>
       <Router>
         <Nav className="navbar bg-info">
-          <Link to="/" className="HomeLink">
-            <NavbarBrand>Shop 2 React</NavbarBrand>
-          </Link>
-
-          <Link to="/cart">
-            0 items
-            <FontAwesomeIcon
-              icon={faShoppingCart}
-              className="fas fa-2x my-3  text-white"
-            />
-          </Link>
+          <h1>
+            <Link to="/" className="text-decoration-none text-white">
+              <span className="px-2">Shop 2</span>
+              <FontAwesomeIcon
+                icon={faRegistered}
+                classsName="fas fa-lg text-white"
+              />
+              eact
+            </Link>
+          </h1>
+          <p className="text-white">
+            <Link to="/cart">
+              <FontAwesomeIcon
+                icon={faShoppingCart}
+                className="fas fa-2x my-3  text-white"
+              />
+            </Link>
+            <span className="font-weight-bold mx-1 text-white">{props.totalValue}</span>
+            items
+          
+          </p>
         </Nav>
         {/* Routes  */}
         <Routes>
@@ -64,7 +74,10 @@ export default function Navbar(props) {
               />
             }
           />
-          <Route path="/cart" element={<Cart prods={props.prods} />} />
+          <Route path="/cart" element={
+          <Cart prods={props.prods}  totalValue={props.totalValue}/>} />
+          <Route path="/signin"  element={
+            <SignIn prods={props.prods}/>} />
         </Routes>
       </Router>
     </React.Fragment>

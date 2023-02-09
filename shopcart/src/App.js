@@ -11,6 +11,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      sortType: "asc",
+      itemPrice: "",
       items: products,
     };
   }
@@ -40,6 +42,8 @@ class App extends Component {
           acc + curr, 0)}
         prods={this.state.items} 
         props={this.state.products}
+        sortType={this.state.sortType}
+        itemPrice={this.state.itemPrice}
         handleIncrement={this.handleIncrement}
         handleDecrement={this.handleDecrement}
         />
