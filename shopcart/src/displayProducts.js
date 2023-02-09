@@ -16,10 +16,15 @@ function DisplayProducts(props) {
 
   return (
     <div>
+      
       {props.products.map((product) => {
         return (
           <div key={product.id} className="border border-1 p-3">
-            <h4 className="mx-5">{product.name}</h4>
+            <h4 className="mx-5">
+              {product.name}
+               <span className='text-danger'>  ${product.price}</span>
+            </h4>
+
             <img
               src={product.image}
               width="150"

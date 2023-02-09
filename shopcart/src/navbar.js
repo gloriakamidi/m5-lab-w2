@@ -71,6 +71,8 @@ export default function Navbar(props) {
                 products={props.prods}
                 onIncrement={props.handleIncrement}
                 onDecrement={props.handleDecrement}
+                sortType={props.sortType}
+                itemPrice={props.itemPrice}
               />
             }
           />
