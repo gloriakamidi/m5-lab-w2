@@ -18,18 +18,20 @@ function DisplayProducts(props) {
   return (
     <div>
       <div>
-        <h3>Sort by Price</h3>
-        <button
-          className="btn btn-secondary dropdown-toggle"
-          type="button"
-          id="dropdownMenuButton"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-          onChange={() => props.onSort(price, "asc")}
-        >
-          Select
-        </button>
+        <span>
+          Sort by Price: 
+          <button
+            className="btn btn-muted dropdown-toggle"
+            type="button"
+            id="dropdownMenuButton"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            onChange={() => props.onSort(price, "asc")}
+          >
+            Select
+          </button>
+        </span>
         <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <a className="dropdown-item" href="#">
             Normal
@@ -44,6 +46,7 @@ function DisplayProducts(props) {
       </div>
       {props.products.map((product) => {
         return (
+          
           <div key={product.id} className="border border-1 p-3">
             <h4 className="mx-5">
               {product.name}

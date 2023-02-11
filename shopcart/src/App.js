@@ -44,16 +44,18 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Navbar 
-        totalValue={this.state.items.map(prod=>prod.quantity).reduce((acc, curr, index) =>
-          acc + curr, 0)}
-        prods={this.state.items} 
-        props={this.state.products}
-        sortType={this.state.sortType}
-        itemPrice={this.state.itemPrice}
-        onSort={this.onSort}
-        handleIncrement={this.handleIncrement}
-        handleDecrement={this.handleDecrement}
+        
+        <Navbar
+          totalValue={this.state.items
+            .map((prod) => prod.quantity)
+            .reduce((acc, curr, index) => acc + curr, 0)}
+          prods={this.state.items}
+          props={this.state.products}
+          sortType={this.state.sortType}
+          itemPrice={this.state.itemPrice}
+          onSort={this.onSort}
+          handleIncrement={this.handleIncrement}
+          handleDecrement={this.handleDecrement}
         />
         
       </div>
