@@ -34,6 +34,13 @@ class App extends Component {
     }
   };
 
+  onSort = (itemPrice, sortType) => {
+    itemPrice.sort((a, b) =>{
+      const isReversed = sortType === "asc" ? 1 : -1;
+      return isReversed * a.text.localeCompare(b.text);
+    })
+  }
+
   render() {
     return (
       <div className="App">
@@ -44,6 +51,7 @@ class App extends Component {
         props={this.state.products}
         sortType={this.state.sortType}
         itemPrice={this.state.itemPrice}
+        onSort={this.onSort}
         handleIncrement={this.handleIncrement}
         handleDecrement={this.handleDecrement}
         />

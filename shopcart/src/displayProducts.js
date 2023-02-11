@@ -14,15 +14,40 @@ function DisplayProducts(props) {
     setShowImge(item);
   };
 
+  const { price } = props;
   return (
     <div>
-      
+      <div>
+        <h3>Sort by Price</h3>
+        <button
+          className="btn btn-secondary dropdown-toggle"
+          type="button"
+          id="dropdownMenuButton"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+          onChange={() => props.onSort(price, "asc")}
+        >
+          Select
+        </button>
+        <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a className="dropdown-item" href="#">
+            Normal
+          </a>
+          <a className="dropdown-item" href="#">
+            Lowest
+          </a>
+          <a className="dropdown-item" href="#">
+            Highest
+          </a>
+        </div>
+      </div>
       {props.products.map((product) => {
         return (
           <div key={product.id} className="border border-1 p-3">
             <h4 className="mx-5">
               {product.name}
-               <span className='text-danger'>  ${product.price}</span>
+              <span className="text-danger"> ${product.price}</span>
             </h4>
 
             <img
